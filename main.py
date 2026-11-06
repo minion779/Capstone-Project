@@ -21,10 +21,16 @@ def translate():
     speechBox.delete(1.0, END)
     speechBox.insert(END, num)
 
-    def mathsBox():
-        table = ""
-        
+def mathsbox():
+    table = ""
+    num = theNum.get()
+    value = speechBox.get()
 
+    for i in range(value + 1):
+        table += str(num)+ " X " + str(i) + " = " + str(num*i) + "\n"
+    Mtable.config(text = table)
+
+theNum = IntVar()
 
 
 speak = Label(root, text = "Say what number you'd like to see a table of.", foreground = "red")
@@ -35,6 +41,10 @@ speechBox.pack(pady = 15)
 
 record = Button(root, text = "Say Number", command = translate)
 record.pack()
+
+tabl = Button(root, command = mathsbox)
+tabl.pack()
+
 
 Mtable = Label(root)
 Mtable.pack(pady = 20)
